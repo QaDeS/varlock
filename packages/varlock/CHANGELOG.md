@@ -1,5 +1,25 @@
 # varlock
 
+## 0.5.0
+
+### Minor Changes
+
+- [#406](https://github.com/dmno-dev/varlock/pull/406) [`ca51993`](https://github.com/dmno-dev/varlock/commit/ca5199371cd6126794e215f67cfcc5f20342eaaa) - Relax header divider requirement - the header block no longer requires a trailing `# ---` divider. All comment blocks before the first config item are now treated as part of the header. Add validation errors for misplaced decorators: item decorators in the header, root decorators on config items, and decorators in detached comment blocks.
+
+### Patch Changes
+
+- [#398](https://github.com/dmno-dev/varlock/pull/398) [`4d436ff`](https://github.com/dmno-dev/varlock/commit/4d436ff42863136fb5ebb7016e525ef54732ea20) - fix: convert plugin file paths to `file://` URLs before dynamic `import()` to resolve `ERR_UNSUPPORTED_ESM_URL_SCHEME` on Windows
+
+## 0.4.2
+
+### Patch Changes
+
+- [#385](https://github.com/dmno-dev/varlock/pull/385) [`5890ee6`](https://github.com/dmno-dev/varlock/commit/5890ee6864930ac4561589d86c87e749733e3755) - fix: `patchGlobalResponse` broke `fetch()` responses failing `instanceof Response` checks. After patching `globalThis.Response` with `VarlockPatchedResponse`, native `fetch()` still returned the original `Response` instances, causing SvelteKit SSR endpoints to throw "handler should return a Response object". Added `Symbol.hasInstance` to `VarlockPatchedResponse` so native responses pass the check.
+
+- [#384](https://github.com/dmno-dev/varlock/pull/384) [`0642185`](https://github.com/dmno-dev/varlock/commit/06421851813e838ea38a4730ab5dec55d8b625ed) - Fix telemetry disable command showing incorrect success message
+
+- [#387](https://github.com/dmno-dev/varlock/pull/387) [`64c8ba9`](https://github.com/dmno-dev/varlock/commit/64c8ba98be7f5616ac556b8e4bd6a66bd73767d4) - fix: auto trigger type generation in `varlock run` (unless auto=false flag is used)
+
 ## 0.4.1
 
 ### Patch Changes
